@@ -27,7 +27,7 @@ except KeyError:
     st.stop()
 
 # Filtro de Data
-data_ini = st.sidebar.date_input("Data Inicial", datetime(2025, 1, 1))
+data_ini = st.sidebar.date_input("Data Inicial", datetime(2026, 1, 1))
 data_fim = st.sidebar.date_input("Data Final", datetime.now())
 
 btn_atualizar = st.sidebar.button("🔄 Atualizar Dados", type="primary")
