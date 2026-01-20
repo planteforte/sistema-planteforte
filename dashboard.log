@@ -1,0 +1,627 @@
+2026-01-13 13:50:35 - root - INFO - Dashboard iniciado
+2026-01-13 13:50:46 - root - INFO - Dashboard iniciado
+2026-01-13 13:50:52 - root - INFO - Dashboard iniciado
+2026-01-13 13:50:54 - root - INFO - Dashboard iniciado
+2026-01-13 13:50:54 - root - INFO - Carregando coordenadas do IBGE
+2026-01-13 13:50:54 - ibge_client - INFO - Carregando dados do IBGE de https://raw.githubusercontent.com/kelvins/municipios-brasileiros/main/csv/municipios.csv
+2026-01-13 13:50:54 - ibge_client - INFO - Carregados 5571 municípios
+2026-01-13 13:50:54 - root - INFO - Coordenadas carregadas: 5571 municípios
+2026-01-13 13:50:54 - api_client - INFO - TinyAPIClient inicializado
+2026-01-13 13:50:54 - root - ERROR - Erro inesperado ao buscar vendas
+Traceback (most recent call last):
+  File "C:\Users\walan\dashboard-tiny\app_melhorado.py", line 110, in buscar_vendas_tiny_paginado
+    vendas_raw = client.buscar_vendas(data_ini, data_fim)
+  File "C:\Users\walan\dashboard-tiny\api_client.py", line 51, in buscar_vendas
+    logger.info(f"Iniciando busca de vendas: {data_ini.date()} a {data_fim.date()}")
+                                              ^^^^^^^^^^^^^
+AttributeError: 'datetime.date' object has no attribute 'date'
+2026-01-13 13:50:54 - root - INFO - Nenhuma venda encontrada: 2025-01-01 a 2025-12-31
+2026-01-13 13:53:57 - root - INFO - Dashboard iniciado
+2026-01-13 13:53:57 - root - INFO - Dashboard iniciado
+2026-01-13 13:54:01 - root - INFO - Dashboard iniciado
+2026-01-13 13:54:01 - root - INFO - Dashboard iniciado
+2026-01-13 13:54:06 - root - INFO - Dashboard iniciado
+2026-01-13 13:54:06 - root - INFO - Dashboard iniciado
+2026-01-13 13:54:08 - root - INFO - Dashboard iniciado
+2026-01-13 13:54:08 - root - INFO - Dashboard iniciado
+2026-01-13 13:54:08 - root - INFO - Nenhuma venda encontrada: 2025-01-01 a 2025-12-31
+2026-01-13 13:54:08 - root - INFO - Nenhuma venda encontrada: 2025-01-01 a 2025-12-31
+2026-01-13 13:54:21 - root - INFO - Dashboard iniciado
+2026-01-13 13:54:21 - root - INFO - Dashboard iniciado
+2026-01-13 13:54:24 - root - INFO - Dashboard iniciado
+2026-01-13 13:54:24 - root - INFO - Dashboard iniciado
+2026-01-13 13:54:24 - root - INFO - Dashboard iniciado
+2026-01-13 13:54:24 - root - INFO - Dashboard iniciado
+2026-01-13 13:54:24 - root - INFO - Nenhuma venda encontrada: 2025-01-01 a 2025-12-31
+2026-01-13 13:54:24 - root - INFO - Nenhuma venda encontrada: 2025-01-01 a 2025-12-31
+2026-01-13 13:57:51 - root - INFO - Dashboard iniciado
+2026-01-13 13:57:51 - root - INFO - Dashboard iniciado
+2026-01-13 13:57:51 - root - INFO - Dashboard iniciado
+2026-01-13 13:57:56 - root - INFO - Dashboard iniciado
+2026-01-13 13:57:56 - root - INFO - Dashboard iniciado
+2026-01-13 13:57:56 - root - INFO - Dashboard iniciado
+2026-01-13 13:58:00 - root - INFO - Dashboard iniciado
+2026-01-13 13:58:00 - root - INFO - Dashboard iniciado
+2026-01-13 13:58:00 - root - INFO - Dashboard iniciado
+2026-01-13 13:58:06 - root - INFO - Dashboard iniciado
+2026-01-13 13:58:06 - root - INFO - Dashboard iniciado
+2026-01-13 13:58:06 - root - INFO - Dashboard iniciado
+2026-01-13 13:58:07 - root - INFO - Dashboard iniciado
+2026-01-13 13:58:07 - root - INFO - Dashboard iniciado
+2026-01-13 13:58:07 - root - INFO - Dashboard iniciado
+2026-01-13 13:58:07 - root - INFO - Nenhuma venda encontrada: 2025-01-01 a 2025-12-31
+2026-01-13 13:58:07 - root - INFO - Nenhuma venda encontrada: 2025-01-01 a 2025-12-31
+2026-01-13 13:58:07 - root - INFO - Nenhuma venda encontrada: 2025-01-01 a 2025-12-31
+2026-01-13 14:03:13 - root - INFO - Dashboard iniciado
+2026-01-13 14:03:20 - root - INFO - Dashboard iniciado
+2026-01-13 14:03:28 - root - INFO - Dashboard iniciado
+2026-01-13 14:03:28 - root - INFO - Carregando coordenadas do IBGE
+2026-01-13 14:03:28 - ibge_client - INFO - Carregando dados do IBGE de https://raw.githubusercontent.com/kelvins/municipios-brasileiros/main/csv/municipios.csv
+2026-01-13 14:03:28 - ibge_client - INFO - Carregados 5571 municípios
+2026-01-13 14:03:28 - root - INFO - Coordenadas carregadas: 5571 municípios
+2026-01-13 14:03:28 - api_client - INFO - TinyAPIClient inicializado
+2026-01-13 14:03:28 - api_client - INFO - Iniciando busca de vendas: 2025-01-01 a 2026-01-13
+2026-01-13 14:03:31 - api_client - INFO - Página 1/65 processada (100 notas)
+2026-01-13 14:03:32 - api_client - INFO - Página 2/65 processada (100 notas)
+2026-01-13 14:03:34 - api_client - INFO - Página 3/65 processada (100 notas)
+2026-01-13 14:03:35 - api_client - INFO - Página 4/65 processada (100 notas)
+2026-01-13 14:03:36 - api_client - INFO - Página 5/65 processada (100 notas)
+2026-01-13 14:03:36 - api_client - INFO - Página 6/65 processada (100 notas)
+2026-01-13 14:03:37 - api_client - INFO - Página 7/65 processada (100 notas)
+2026-01-13 14:03:37 - api_client - INFO - Página 8/65 processada (100 notas)
+2026-01-13 14:03:38 - api_client - INFO - Página 9/65 processada (100 notas)
+2026-01-13 14:03:38 - api_client - INFO - Página 10/65 processada (100 notas)
+2026-01-13 14:03:39 - api_client - INFO - Página 11/65 processada (100 notas)
+2026-01-13 14:03:39 - api_client - INFO - Página 12/65 processada (100 notas)
+2026-01-13 14:03:40 - api_client - INFO - Página 13/65 processada (100 notas)
+2026-01-13 14:03:41 - api_client - INFO - Página 14/65 processada (100 notas)
+2026-01-13 14:03:41 - api_client - INFO - Página 15/65 processada (100 notas)
+2026-01-13 14:03:42 - api_client - INFO - Página 16/65 processada (100 notas)
+2026-01-13 14:03:43 - api_client - INFO - Página 17/65 processada (100 notas)
+2026-01-13 14:03:43 - api_client - INFO - Página 18/65 processada (100 notas)
+2026-01-13 14:03:44 - api_client - INFO - Página 19/65 processada (100 notas)
+2026-01-13 14:03:44 - api_client - INFO - Página 20/65 processada (100 notas)
+2026-01-13 14:03:45 - api_client - INFO - Página 21/65 processada (100 notas)
+2026-01-13 14:03:46 - api_client - INFO - Página 22/65 processada (100 notas)
+2026-01-13 14:03:46 - api_client - INFO - Página 23/65 processada (100 notas)
+2026-01-13 14:03:47 - api_client - INFO - Página 24/65 processada (100 notas)
+2026-01-13 14:03:47 - api_client - INFO - Página 25/65 processada (100 notas)
+2026-01-13 14:03:48 - api_client - INFO - Página 26/65 processada (100 notas)
+2026-01-13 14:03:49 - api_client - INFO - Página 27/65 processada (100 notas)
+2026-01-13 14:03:49 - api_client - INFO - Página 28/65 processada (100 notas)
+2026-01-13 14:03:50 - api_client - INFO - Página 29/65 processada (100 notas)
+2026-01-13 14:03:51 - api_client - INFO - Página 30/65 processada (100 notas)
+2026-01-13 14:03:52 - api_client - INFO - Página 31/65 processada (100 notas)
+2026-01-13 14:03:52 - api_client - INFO - Página 32/65 processada (100 notas)
+2026-01-13 14:03:53 - api_client - INFO - Página 33/65 processada (100 notas)
+2026-01-13 14:03:54 - api_client - INFO - Página 34/65 processada (100 notas)
+2026-01-13 14:03:55 - api_client - INFO - Página 35/65 processada (100 notas)
+2026-01-13 14:03:56 - api_client - INFO - Página 36/65 processada (100 notas)
+2026-01-13 14:03:56 - api_client - INFO - Página 37/65 processada (100 notas)
+2026-01-13 14:03:57 - api_client - INFO - Página 38/65 processada (100 notas)
+2026-01-13 14:03:58 - api_client - INFO - Página 39/65 processada (100 notas)
+2026-01-13 14:03:58 - api_client - INFO - Página 40/65 processada (100 notas)
+2026-01-13 14:03:59 - api_client - INFO - Página 41/65 processada (100 notas)
+2026-01-13 14:04:00 - api_client - INFO - Página 42/65 processada (100 notas)
+2026-01-13 14:04:00 - api_client - INFO - Página 43/65 processada (100 notas)
+2026-01-13 14:04:01 - api_client - INFO - Página 44/65 processada (100 notas)
+2026-01-13 14:04:02 - api_client - INFO - Página 45/65 processada (100 notas)
+2026-01-13 14:04:02 - api_client - INFO - Página 46/65 processada (100 notas)
+2026-01-13 14:04:03 - api_client - INFO - Página 47/65 processada (100 notas)
+2026-01-13 14:04:04 - api_client - INFO - Página 48/65 processada (100 notas)
+2026-01-13 14:04:05 - api_client - INFO - Página 49/65 processada (100 notas)
+2026-01-13 14:04:06 - api_client - INFO - Página 50/65 processada (100 notas)
+2026-01-13 14:04:06 - api_client - INFO - Página 51/65 processada (100 notas)
+2026-01-13 14:04:07 - api_client - INFO - Página 52/65 processada (100 notas)
+2026-01-13 14:04:08 - api_client - INFO - Página 53/65 processada (100 notas)
+2026-01-13 14:04:09 - api_client - INFO - Página 54/65 processada (100 notas)
+2026-01-13 14:04:10 - api_client - INFO - Página 55/65 processada (100 notas)
+2026-01-13 14:04:11 - api_client - INFO - Página 56/65 processada (100 notas)
+2026-01-13 14:04:11 - api_client - INFO - Página 57/65 processada (100 notas)
+2026-01-13 14:04:12 - api_client - INFO - Página 58/65 processada (100 notas)
+2026-01-13 14:04:13 - api_client - INFO - Página 59/65 processada (100 notas)
+2026-01-13 14:04:14 - api_client - INFO - Página 60/65 processada (100 notas)
+2026-01-13 14:04:15 - api_client - INFO - Página 61/65 processada (100 notas)
+2026-01-13 14:04:16 - api_client - INFO - Página 62/65 processada (100 notas)
+2026-01-13 14:04:16 - api_client - INFO - Página 63/65 processada (100 notas)
+2026-01-13 14:04:17 - api_client - INFO - Página 64/65 processada (100 notas)
+2026-01-13 14:04:18 - api_client - INFO - Página 65/65 processada (73 notas)
+2026-01-13 14:04:18 - api_client - INFO - Busca concluída: 6473 vendas encontradas
+2026-01-13 14:04:19 - root - INFO - Vendas processadas: 6473 registros
+2026-01-13 14:04:20 - root - INFO - Dashboard exibido com sucesso
+2026-01-14 14:46:40 - root - INFO - Dashboard iniciado
+2026-01-14 14:51:19 - root - INFO - Dashboard iniciado
+2026-01-14 14:51:19 - root - INFO - Dashboard iniciado
+2026-01-14 14:51:27 - root - INFO - Dashboard iniciado
+2026-01-14 14:51:27 - root - INFO - Dashboard iniciado
+2026-01-14 14:51:30 - root - INFO - Dashboard iniciado
+2026-01-14 14:51:30 - root - INFO - Dashboard iniciado
+2026-01-14 14:51:31 - root - INFO - Dashboard iniciado
+2026-01-14 14:51:31 - root - INFO - Dashboard iniciado
+2026-01-14 14:51:31 - root - INFO - Carregando coordenadas do IBGE
+2026-01-14 14:51:31 - root - INFO - Carregando coordenadas do IBGE
+2026-01-14 14:51:31 - ibge_client - INFO - Carregando dados do IBGE de https://raw.githubusercontent.com/kelvins/municipios-brasileiros/main/csv/municipios.csv
+2026-01-14 14:51:31 - ibge_client - INFO - Carregando dados do IBGE de https://raw.githubusercontent.com/kelvins/municipios-brasileiros/main/csv/municipios.csv
+2026-01-14 14:51:31 - ibge_client - INFO - Carregados 5571 municípios
+2026-01-14 14:51:31 - ibge_client - INFO - Carregados 5571 municípios
+2026-01-14 14:51:31 - root - INFO - Coordenadas carregadas: 5571 municípios
+2026-01-14 14:51:31 - root - INFO - Coordenadas carregadas: 5571 municípios
+2026-01-14 14:51:31 - api_client - INFO - TinyAPIClient inicializado
+2026-01-14 14:51:31 - api_client - INFO - TinyAPIClient inicializado
+2026-01-14 14:51:31 - api_client - INFO - Iniciando busca de vendas: 2026-01-01 a 2026-01-14
+2026-01-14 14:51:31 - api_client - INFO - Iniciando busca de vendas: 2026-01-01 a 2026-01-14
+2026-01-14 14:51:32 - api_client - INFO - Página 1/2 processada (100 notas)
+2026-01-14 14:51:32 - api_client - INFO - Página 1/2 processada (100 notas)
+2026-01-14 14:51:32 - api_client - INFO - Página 2/2 processada (18 notas)
+2026-01-14 14:51:32 - api_client - INFO - Página 2/2 processada (18 notas)
+2026-01-14 14:51:32 - api_client - INFO - Busca concluída: 118 vendas encontradas
+2026-01-14 14:51:32 - api_client - INFO - Busca concluída: 118 vendas encontradas
+2026-01-14 14:51:33 - root - INFO - Vendas processadas: 118 registros
+2026-01-14 14:51:33 - root - INFO - Vendas processadas: 118 registros
+2026-01-14 14:51:34 - root - INFO - Dashboard exibido com sucesso
+2026-01-14 14:51:34 - root - INFO - Dashboard exibido com sucesso
+2026-01-14 14:57:25 - root - INFO - Dashboard iniciado
+2026-01-14 14:57:25 - root - INFO - Dashboard iniciado
+2026-01-14 14:57:25 - root - INFO - Dashboard iniciado
+2026-01-14 14:57:45 - root - INFO - Dashboard iniciado
+2026-01-14 14:57:45 - root - INFO - Dashboard iniciado
+2026-01-14 14:57:45 - root - INFO - Dashboard iniciado
+2026-01-14 15:06:55 - root - INFO - Dashboard exibido com sucesso
+2026-01-14 15:06:55 - root - INFO - Dashboard exibido com sucesso
+2026-01-14 15:06:55 - root - INFO - Dashboard exibido com sucesso
+2026-01-14 15:06:55 - root - INFO - Dashboard exibido com sucesso
+2026-01-14 15:06:55 - root - INFO - Dashboard exibido com sucesso
+2026-01-14 15:36:42 - root - INFO - Carregando coordenadas do IBGE
+2026-01-14 15:36:42 - root - INFO - Carregando coordenadas do IBGE
+2026-01-14 15:36:42 - root - INFO - Carregando coordenadas do IBGE
+2026-01-14 15:36:42 - root - INFO - Carregando coordenadas do IBGE
+2026-01-14 15:36:42 - root - INFO - Carregando coordenadas do IBGE
+2026-01-14 15:36:42 - root - INFO - Carregando coordenadas do IBGE
+2026-01-14 15:36:42 - root - INFO - Carregando coordenadas do IBGE
+2026-01-14 15:36:42 - root - INFO - Carregando coordenadas do IBGE
+2026-01-14 15:36:42 - root - INFO - Carregando coordenadas do IBGE
+2026-01-14 15:36:42 - root - INFO - Carregando coordenadas do IBGE
+2026-01-14 15:36:42 - root - INFO - Carregando coordenadas do IBGE
+2026-01-14 15:36:42 - root - INFO - Carregando coordenadas do IBGE
+2026-01-14 15:36:42 - root - INFO - Carregando coordenadas do IBGE
+2026-01-14 15:36:42 - root - INFO - Carregando coordenadas do IBGE
+2026-01-14 15:36:42 - root - INFO - Carregando coordenadas do IBGE
+2026-01-14 15:36:42 - ibge_client - INFO - Carregando dados do IBGE de https://raw.githubusercontent.com/kelvins/municipios-brasileiros/main/csv/municipios.csv
+2026-01-14 15:36:42 - ibge_client - INFO - Carregando dados do IBGE de https://raw.githubusercontent.com/kelvins/municipios-brasileiros/main/csv/municipios.csv
+2026-01-14 15:36:42 - ibge_client - INFO - Carregando dados do IBGE de https://raw.githubusercontent.com/kelvins/municipios-brasileiros/main/csv/municipios.csv
+2026-01-14 15:36:42 - ibge_client - INFO - Carregando dados do IBGE de https://raw.githubusercontent.com/kelvins/municipios-brasileiros/main/csv/municipios.csv
+2026-01-14 15:36:42 - ibge_client - INFO - Carregando dados do IBGE de https://raw.githubusercontent.com/kelvins/municipios-brasileiros/main/csv/municipios.csv
+2026-01-14 15:36:42 - ibge_client - INFO - Carregando dados do IBGE de https://raw.githubusercontent.com/kelvins/municipios-brasileiros/main/csv/municipios.csv
+2026-01-14 15:36:42 - ibge_client - INFO - Carregando dados do IBGE de https://raw.githubusercontent.com/kelvins/municipios-brasileiros/main/csv/municipios.csv
+2026-01-14 15:36:42 - ibge_client - INFO - Carregando dados do IBGE de https://raw.githubusercontent.com/kelvins/municipios-brasileiros/main/csv/municipios.csv
+2026-01-14 15:36:42 - ibge_client - INFO - Carregando dados do IBGE de https://raw.githubusercontent.com/kelvins/municipios-brasileiros/main/csv/municipios.csv
+2026-01-14 15:36:42 - ibge_client - INFO - Carregando dados do IBGE de https://raw.githubusercontent.com/kelvins/municipios-brasileiros/main/csv/municipios.csv
+2026-01-14 15:36:42 - ibge_client - INFO - Carregando dados do IBGE de https://raw.githubusercontent.com/kelvins/municipios-brasileiros/main/csv/municipios.csv
+2026-01-14 15:36:42 - ibge_client - INFO - Carregando dados do IBGE de https://raw.githubusercontent.com/kelvins/municipios-brasileiros/main/csv/municipios.csv
+2026-01-14 15:36:42 - ibge_client - INFO - Carregando dados do IBGE de https://raw.githubusercontent.com/kelvins/municipios-brasileiros/main/csv/municipios.csv
+2026-01-14 15:36:42 - ibge_client - INFO - Carregando dados do IBGE de https://raw.githubusercontent.com/kelvins/municipios-brasileiros/main/csv/municipios.csv
+2026-01-14 15:36:42 - ibge_client - INFO - Carregando dados do IBGE de https://raw.githubusercontent.com/kelvins/municipios-brasileiros/main/csv/municipios.csv
+2026-01-14 15:36:43 - ibge_client - INFO - Carregados 5571 municípios
+2026-01-14 15:36:43 - ibge_client - INFO - Carregados 5571 municípios
+2026-01-14 15:36:43 - ibge_client - INFO - Carregados 5571 municípios
+2026-01-14 15:36:43 - ibge_client - INFO - Carregados 5571 municípios
+2026-01-14 15:36:43 - ibge_client - INFO - Carregados 5571 municípios
+2026-01-14 15:36:43 - ibge_client - INFO - Carregados 5571 municípios
+2026-01-14 15:36:43 - ibge_client - INFO - Carregados 5571 municípios
+2026-01-14 15:36:43 - ibge_client - INFO - Carregados 5571 municípios
+2026-01-14 15:36:43 - ibge_client - INFO - Carregados 5571 municípios
+2026-01-14 15:36:43 - ibge_client - INFO - Carregados 5571 municípios
+2026-01-14 15:36:43 - ibge_client - INFO - Carregados 5571 municípios
+2026-01-14 15:36:43 - ibge_client - INFO - Carregados 5571 municípios
+2026-01-14 15:36:43 - ibge_client - INFO - Carregados 5571 municípios
+2026-01-14 15:36:43 - ibge_client - INFO - Carregados 5571 municípios
+2026-01-14 15:36:43 - ibge_client - INFO - Carregados 5571 municípios
+2026-01-14 15:36:43 - root - INFO - Coordenadas carregadas: 5571 municípios
+2026-01-14 15:36:43 - root - INFO - Coordenadas carregadas: 5571 municípios
+2026-01-14 15:36:43 - root - INFO - Coordenadas carregadas: 5571 municípios
+2026-01-14 15:36:43 - root - INFO - Coordenadas carregadas: 5571 municípios
+2026-01-14 15:36:43 - root - INFO - Coordenadas carregadas: 5571 municípios
+2026-01-14 15:36:43 - root - INFO - Coordenadas carregadas: 5571 municípios
+2026-01-14 15:36:43 - root - INFO - Coordenadas carregadas: 5571 municípios
+2026-01-14 15:36:43 - root - INFO - Coordenadas carregadas: 5571 municípios
+2026-01-14 15:36:43 - root - INFO - Coordenadas carregadas: 5571 municípios
+2026-01-14 15:36:43 - root - INFO - Coordenadas carregadas: 5571 municípios
+2026-01-14 15:36:43 - root - INFO - Coordenadas carregadas: 5571 municípios
+2026-01-14 15:36:43 - root - INFO - Coordenadas carregadas: 5571 municípios
+2026-01-14 15:36:43 - root - INFO - Coordenadas carregadas: 5571 municípios
+2026-01-14 15:36:43 - root - INFO - Coordenadas carregadas: 5571 municípios
+2026-01-14 15:36:43 - root - INFO - Coordenadas carregadas: 5571 municípios
+2026-01-14 15:36:43 - api_client - INFO - TinyAPIClient inicializado
+2026-01-14 15:36:43 - api_client - INFO - TinyAPIClient inicializado
+2026-01-14 15:36:43 - api_client - INFO - TinyAPIClient inicializado
+2026-01-14 15:36:43 - api_client - INFO - TinyAPIClient inicializado
+2026-01-14 15:36:43 - api_client - INFO - TinyAPIClient inicializado
+2026-01-14 15:36:43 - api_client - INFO - TinyAPIClient inicializado
+2026-01-14 15:36:43 - api_client - INFO - TinyAPIClient inicializado
+2026-01-14 15:36:43 - api_client - INFO - TinyAPIClient inicializado
+2026-01-14 15:36:43 - api_client - INFO - TinyAPIClient inicializado
+2026-01-14 15:36:43 - api_client - INFO - TinyAPIClient inicializado
+2026-01-14 15:36:43 - api_client - INFO - TinyAPIClient inicializado
+2026-01-14 15:36:43 - api_client - INFO - TinyAPIClient inicializado
+2026-01-14 15:36:43 - api_client - INFO - TinyAPIClient inicializado
+2026-01-14 15:36:43 - api_client - INFO - TinyAPIClient inicializado
+2026-01-14 15:36:43 - api_client - INFO - TinyAPIClient inicializado
+2026-01-14 15:36:43 - api_client - INFO - Iniciando busca de vendas: 2026-01-01 a 2026-01-14
+2026-01-14 15:36:43 - api_client - INFO - Iniciando busca de vendas: 2026-01-01 a 2026-01-14
+2026-01-14 15:36:43 - api_client - INFO - Iniciando busca de vendas: 2026-01-01 a 2026-01-14
+2026-01-14 15:36:43 - api_client - INFO - Iniciando busca de vendas: 2026-01-01 a 2026-01-14
+2026-01-14 15:36:43 - api_client - INFO - Iniciando busca de vendas: 2026-01-01 a 2026-01-14
+2026-01-14 15:36:43 - api_client - INFO - Iniciando busca de vendas: 2026-01-01 a 2026-01-14
+2026-01-14 15:36:43 - api_client - INFO - Iniciando busca de vendas: 2026-01-01 a 2026-01-14
+2026-01-14 15:36:43 - api_client - INFO - Iniciando busca de vendas: 2026-01-01 a 2026-01-14
+2026-01-14 15:36:43 - api_client - INFO - Iniciando busca de vendas: 2026-01-01 a 2026-01-14
+2026-01-14 15:36:43 - api_client - INFO - Iniciando busca de vendas: 2026-01-01 a 2026-01-14
+2026-01-14 15:36:43 - api_client - INFO - Iniciando busca de vendas: 2026-01-01 a 2026-01-14
+2026-01-14 15:36:43 - api_client - INFO - Iniciando busca de vendas: 2026-01-01 a 2026-01-14
+2026-01-14 15:36:43 - api_client - INFO - Iniciando busca de vendas: 2026-01-01 a 2026-01-14
+2026-01-14 15:36:43 - api_client - INFO - Iniciando busca de vendas: 2026-01-01 a 2026-01-14
+2026-01-14 15:36:43 - api_client - INFO - Iniciando busca de vendas: 2026-01-01 a 2026-01-14
+2026-01-14 15:36:43 - api_client - INFO - Página 1/2 processada (100 notas)
+2026-01-14 15:36:43 - api_client - INFO - Página 1/2 processada (100 notas)
+2026-01-14 15:36:43 - api_client - INFO - Página 1/2 processada (100 notas)
+2026-01-14 15:36:43 - api_client - INFO - Página 1/2 processada (100 notas)
+2026-01-14 15:36:43 - api_client - INFO - Página 1/2 processada (100 notas)
+2026-01-14 15:36:43 - api_client - INFO - Página 1/2 processada (100 notas)
+2026-01-14 15:36:43 - api_client - INFO - Página 1/2 processada (100 notas)
+2026-01-14 15:36:43 - api_client - INFO - Página 1/2 processada (100 notas)
+2026-01-14 15:36:43 - api_client - INFO - Página 1/2 processada (100 notas)
+2026-01-14 15:36:43 - api_client - INFO - Página 1/2 processada (100 notas)
+2026-01-14 15:36:43 - api_client - INFO - Página 1/2 processada (100 notas)
+2026-01-14 15:36:43 - api_client - INFO - Página 1/2 processada (100 notas)
+2026-01-14 15:36:43 - api_client - INFO - Página 1/2 processada (100 notas)
+2026-01-14 15:36:43 - api_client - INFO - Página 1/2 processada (100 notas)
+2026-01-14 15:36:43 - api_client - INFO - Página 1/2 processada (100 notas)
+2026-01-14 15:36:44 - api_client - INFO - Página 2/2 processada (18 notas)
+2026-01-14 15:36:44 - api_client - INFO - Página 2/2 processada (18 notas)
+2026-01-14 15:36:44 - api_client - INFO - Página 2/2 processada (18 notas)
+2026-01-14 15:36:44 - api_client - INFO - Página 2/2 processada (18 notas)
+2026-01-14 15:36:44 - api_client - INFO - Página 2/2 processada (18 notas)
+2026-01-14 15:36:44 - api_client - INFO - Página 2/2 processada (18 notas)
+2026-01-14 15:36:44 - api_client - INFO - Página 2/2 processada (18 notas)
+2026-01-14 15:36:44 - api_client - INFO - Página 2/2 processada (18 notas)
+2026-01-14 15:36:44 - api_client - INFO - Página 2/2 processada (18 notas)
+2026-01-14 15:36:44 - api_client - INFO - Página 2/2 processada (18 notas)
+2026-01-14 15:36:44 - api_client - INFO - Página 2/2 processada (18 notas)
+2026-01-14 15:36:44 - api_client - INFO - Página 2/2 processada (18 notas)
+2026-01-14 15:36:44 - api_client - INFO - Página 2/2 processada (18 notas)
+2026-01-14 15:36:44 - api_client - INFO - Página 2/2 processada (18 notas)
+2026-01-14 15:36:44 - api_client - INFO - Página 2/2 processada (18 notas)
+2026-01-14 15:36:44 - api_client - INFO - Busca concluída: 118 vendas encontradas
+2026-01-14 15:36:44 - api_client - INFO - Busca concluída: 118 vendas encontradas
+2026-01-14 15:36:44 - api_client - INFO - Busca concluída: 118 vendas encontradas
+2026-01-14 15:36:44 - api_client - INFO - Busca concluída: 118 vendas encontradas
+2026-01-14 15:36:44 - api_client - INFO - Busca concluída: 118 vendas encontradas
+2026-01-14 15:36:44 - api_client - INFO - Busca concluída: 118 vendas encontradas
+2026-01-14 15:36:44 - api_client - INFO - Busca concluída: 118 vendas encontradas
+2026-01-14 15:36:44 - api_client - INFO - Busca concluída: 118 vendas encontradas
+2026-01-14 15:36:44 - api_client - INFO - Busca concluída: 118 vendas encontradas
+2026-01-14 15:36:44 - api_client - INFO - Busca concluída: 118 vendas encontradas
+2026-01-14 15:36:44 - api_client - INFO - Busca concluída: 118 vendas encontradas
+2026-01-14 15:36:44 - api_client - INFO - Busca concluída: 118 vendas encontradas
+2026-01-14 15:36:44 - api_client - INFO - Busca concluída: 118 vendas encontradas
+2026-01-14 15:36:44 - api_client - INFO - Busca concluída: 118 vendas encontradas
+2026-01-14 15:36:44 - api_client - INFO - Busca concluída: 118 vendas encontradas
+2026-01-14 15:36:45 - root - INFO - Vendas processadas: 118 registros
+2026-01-14 15:36:45 - root - INFO - Vendas processadas: 118 registros
+2026-01-14 15:36:45 - root - INFO - Vendas processadas: 118 registros
+2026-01-14 15:36:45 - root - INFO - Vendas processadas: 118 registros
+2026-01-14 15:36:45 - root - INFO - Vendas processadas: 118 registros
+2026-01-14 15:36:45 - root - INFO - Vendas processadas: 118 registros
+2026-01-14 15:36:45 - root - INFO - Vendas processadas: 118 registros
+2026-01-14 15:36:45 - root - INFO - Vendas processadas: 118 registros
+2026-01-14 15:36:45 - root - INFO - Vendas processadas: 118 registros
+2026-01-14 15:36:45 - root - INFO - Vendas processadas: 118 registros
+2026-01-14 15:36:45 - root - INFO - Vendas processadas: 118 registros
+2026-01-14 15:36:45 - root - INFO - Vendas processadas: 118 registros
+2026-01-14 15:36:45 - root - INFO - Vendas processadas: 118 registros
+2026-01-14 15:36:45 - root - INFO - Vendas processadas: 118 registros
+2026-01-14 15:36:45 - root - INFO - Vendas processadas: 118 registros
+2026-01-14 15:36:45 - root - INFO - Dashboard exibido com sucesso
+2026-01-14 15:36:45 - root - INFO - Dashboard exibido com sucesso
+2026-01-14 15:36:45 - root - INFO - Dashboard exibido com sucesso
+2026-01-14 15:36:45 - root - INFO - Dashboard exibido com sucesso
+2026-01-14 15:36:45 - root - INFO - Dashboard exibido com sucesso
+2026-01-14 15:36:45 - root - INFO - Dashboard exibido com sucesso
+2026-01-14 15:36:45 - root - INFO - Dashboard exibido com sucesso
+2026-01-14 15:36:45 - root - INFO - Dashboard exibido com sucesso
+2026-01-14 15:36:45 - root - INFO - Dashboard exibido com sucesso
+2026-01-14 15:36:45 - root - INFO - Dashboard exibido com sucesso
+2026-01-14 15:36:45 - root - INFO - Dashboard exibido com sucesso
+2026-01-14 15:36:45 - root - INFO - Dashboard exibido com sucesso
+2026-01-14 15:36:45 - root - INFO - Dashboard exibido com sucesso
+2026-01-14 15:36:45 - root - INFO - Dashboard exibido com sucesso
+2026-01-14 15:36:45 - root - INFO - Dashboard exibido com sucesso
+2026-01-14 17:14:17 - root - INFO - Carregando coordenadas do IBGE
+2026-01-14 17:14:17 - root - INFO - Carregando coordenadas do IBGE
+2026-01-14 17:14:17 - ibge_client - INFO - Carregando dados do IBGE de https://raw.githubusercontent.com/kelvins/municipios-brasileiros/main/csv/municipios.csv
+2026-01-14 17:14:17 - ibge_client - INFO - Carregando dados do IBGE de https://raw.githubusercontent.com/kelvins/municipios-brasileiros/main/csv/municipios.csv
+2026-01-14 17:14:18 - ibge_client - INFO - Carregados 5571 municípios
+2026-01-14 17:14:18 - ibge_client - INFO - Carregados 5571 municípios
+2026-01-14 17:14:18 - root - INFO - Coordenadas carregadas: 5571 municípios
+2026-01-14 17:14:18 - root - INFO - Coordenadas carregadas: 5571 municípios
+2026-01-14 17:14:18 - api_client - INFO - TinyAPIClient inicializado
+2026-01-14 17:14:18 - api_client - INFO - TinyAPIClient inicializado
+2026-01-14 17:14:18 - api_client - INFO - Iniciando busca de vendas: 2025-01-01 a 2026-01-14
+2026-01-14 17:14:18 - api_client - INFO - Iniciando busca de vendas: 2025-01-01 a 2026-01-14
+2026-01-14 17:14:20 - api_client - INFO - Página 1/65 processada (100 notas)
+2026-01-14 17:14:20 - api_client - INFO - Página 1/65 processada (100 notas)
+2026-01-14 17:14:23 - api_client - INFO - Página 2/65 processada (100 notas)
+2026-01-14 17:14:23 - api_client - INFO - Página 2/65 processada (100 notas)
+2026-01-14 17:14:24 - api_client - INFO - Página 3/65 processada (100 notas)
+2026-01-14 17:14:24 - api_client - INFO - Página 3/65 processada (100 notas)
+2026-01-14 17:14:24 - api_client - INFO - Página 4/65 processada (100 notas)
+2026-01-14 17:14:24 - api_client - INFO - Página 4/65 processada (100 notas)
+2026-01-14 17:14:25 - api_client - INFO - Página 5/65 processada (100 notas)
+2026-01-14 17:14:25 - api_client - INFO - Página 5/65 processada (100 notas)
+2026-01-14 17:14:26 - api_client - INFO - Página 6/65 processada (100 notas)
+2026-01-14 17:14:26 - api_client - INFO - Página 6/65 processada (100 notas)
+2026-01-14 17:14:27 - api_client - INFO - Página 7/65 processada (100 notas)
+2026-01-14 17:14:27 - api_client - INFO - Página 7/65 processada (100 notas)
+2026-01-14 17:14:27 - api_client - INFO - Página 8/65 processada (100 notas)
+2026-01-14 17:14:27 - api_client - INFO - Página 8/65 processada (100 notas)
+2026-01-14 17:14:28 - api_client - INFO - Página 9/65 processada (100 notas)
+2026-01-14 17:14:28 - api_client - INFO - Página 9/65 processada (100 notas)
+2026-01-14 17:14:28 - api_client - INFO - Página 10/65 processada (100 notas)
+2026-01-14 17:14:28 - api_client - INFO - Página 10/65 processada (100 notas)
+2026-01-14 17:14:29 - api_client - INFO - Página 11/65 processada (100 notas)
+2026-01-14 17:14:29 - api_client - INFO - Página 11/65 processada (100 notas)
+2026-01-14 17:14:29 - api_client - INFO - Página 12/65 processada (100 notas)
+2026-01-14 17:14:29 - api_client - INFO - Página 12/65 processada (100 notas)
+2026-01-14 17:14:30 - api_client - INFO - Página 13/65 processada (100 notas)
+2026-01-14 17:14:30 - api_client - INFO - Página 13/65 processada (100 notas)
+2026-01-14 17:14:30 - api_client - INFO - Página 14/65 processada (100 notas)
+2026-01-14 17:14:30 - api_client - INFO - Página 14/65 processada (100 notas)
+2026-01-14 17:14:31 - api_client - INFO - Página 15/65 processada (100 notas)
+2026-01-14 17:14:31 - api_client - INFO - Página 15/65 processada (100 notas)
+2026-01-14 17:14:32 - api_client - INFO - Página 16/65 processada (100 notas)
+2026-01-14 17:14:32 - api_client - INFO - Página 16/65 processada (100 notas)
+2026-01-14 17:14:32 - api_client - INFO - Página 17/65 processada (100 notas)
+2026-01-14 17:14:32 - api_client - INFO - Página 17/65 processada (100 notas)
+2026-01-14 17:14:33 - api_client - INFO - Página 18/65 processada (100 notas)
+2026-01-14 17:14:33 - api_client - INFO - Página 18/65 processada (100 notas)
+2026-01-14 17:14:33 - api_client - INFO - Página 19/65 processada (100 notas)
+2026-01-14 17:14:33 - api_client - INFO - Página 19/65 processada (100 notas)
+2026-01-14 17:14:34 - api_client - INFO - Página 20/65 processada (100 notas)
+2026-01-14 17:14:34 - api_client - INFO - Página 20/65 processada (100 notas)
+2026-01-14 17:14:35 - api_client - INFO - Página 21/65 processada (100 notas)
+2026-01-14 17:14:35 - api_client - INFO - Página 21/65 processada (100 notas)
+2026-01-14 17:14:35 - api_client - INFO - Página 22/65 processada (100 notas)
+2026-01-14 17:14:35 - api_client - INFO - Página 22/65 processada (100 notas)
+2026-01-14 17:14:36 - api_client - INFO - Página 23/65 processada (100 notas)
+2026-01-14 17:14:36 - api_client - INFO - Página 23/65 processada (100 notas)
+2026-01-14 17:14:36 - api_client - INFO - Página 24/65 processada (100 notas)
+2026-01-14 17:14:36 - api_client - INFO - Página 24/65 processada (100 notas)
+2026-01-14 17:14:37 - api_client - INFO - Página 25/65 processada (100 notas)
+2026-01-14 17:14:37 - api_client - INFO - Página 25/65 processada (100 notas)
+2026-01-14 17:14:38 - api_client - INFO - Página 26/65 processada (100 notas)
+2026-01-14 17:14:38 - api_client - INFO - Página 26/65 processada (100 notas)
+2026-01-14 17:14:39 - api_client - INFO - Página 27/65 processada (100 notas)
+2026-01-14 17:14:39 - api_client - INFO - Página 27/65 processada (100 notas)
+2026-01-14 17:14:39 - api_client - INFO - Página 28/65 processada (100 notas)
+2026-01-14 17:14:39 - api_client - INFO - Página 28/65 processada (100 notas)
+2026-01-14 17:14:40 - api_client - INFO - Página 29/65 processada (100 notas)
+2026-01-14 17:14:40 - api_client - INFO - Página 29/65 processada (100 notas)
+2026-01-14 17:14:43 - api_client - INFO - Página 30/65 processada (100 notas)
+2026-01-14 17:14:43 - api_client - INFO - Página 30/65 processada (100 notas)
+2026-01-14 17:14:43 - api_client - INFO - Página 31/65 processada (100 notas)
+2026-01-14 17:14:43 - api_client - INFO - Página 31/65 processada (100 notas)
+2026-01-14 17:14:44 - api_client - INFO - Página 32/65 processada (100 notas)
+2026-01-14 17:14:44 - api_client - INFO - Página 32/65 processada (100 notas)
+2026-01-14 17:14:45 - api_client - INFO - Página 33/65 processada (100 notas)
+2026-01-14 17:14:45 - api_client - INFO - Página 33/65 processada (100 notas)
+2026-01-14 17:14:46 - api_client - INFO - Página 34/65 processada (100 notas)
+2026-01-14 17:14:46 - api_client - INFO - Página 34/65 processada (100 notas)
+2026-01-14 17:14:46 - api_client - INFO - Página 35/65 processada (100 notas)
+2026-01-14 17:14:46 - api_client - INFO - Página 35/65 processada (100 notas)
+2026-01-14 17:14:47 - api_client - INFO - Página 36/65 processada (100 notas)
+2026-01-14 17:14:47 - api_client - INFO - Página 36/65 processada (100 notas)
+2026-01-14 17:14:48 - api_client - INFO - Página 37/65 processada (100 notas)
+2026-01-14 17:14:48 - api_client - INFO - Página 37/65 processada (100 notas)
+2026-01-14 17:14:48 - api_client - INFO - Página 38/65 processada (100 notas)
+2026-01-14 17:14:48 - api_client - INFO - Página 38/65 processada (100 notas)
+2026-01-14 17:14:49 - api_client - INFO - Página 39/65 processada (100 notas)
+2026-01-14 17:14:49 - api_client - INFO - Página 39/65 processada (100 notas)
+2026-01-14 17:14:50 - api_client - INFO - Página 40/65 processada (100 notas)
+2026-01-14 17:14:50 - api_client - INFO - Página 40/65 processada (100 notas)
+2026-01-14 17:14:50 - api_client - INFO - Página 41/65 processada (100 notas)
+2026-01-14 17:14:50 - api_client - INFO - Página 41/65 processada (100 notas)
+2026-01-14 17:14:51 - api_client - INFO - Página 42/65 processada (100 notas)
+2026-01-14 17:14:51 - api_client - INFO - Página 42/65 processada (100 notas)
+2026-01-14 17:14:51 - api_client - INFO - Página 43/65 processada (100 notas)
+2026-01-14 17:14:51 - api_client - INFO - Página 43/65 processada (100 notas)
+2026-01-14 17:14:52 - api_client - INFO - Página 44/65 processada (100 notas)
+2026-01-14 17:14:52 - api_client - INFO - Página 44/65 processada (100 notas)
+2026-01-14 17:14:53 - api_client - INFO - Página 45/65 processada (100 notas)
+2026-01-14 17:14:53 - api_client - INFO - Página 45/65 processada (100 notas)
+2026-01-14 17:14:53 - api_client - INFO - Página 46/65 processada (100 notas)
+2026-01-14 17:14:53 - api_client - INFO - Página 46/65 processada (100 notas)
+2026-01-14 17:14:54 - api_client - INFO - Página 47/65 processada (100 notas)
+2026-01-14 17:14:54 - api_client - INFO - Página 47/65 processada (100 notas)
+2026-01-14 17:14:54 - api_client - INFO - Página 48/65 processada (100 notas)
+2026-01-14 17:14:54 - api_client - INFO - Página 48/65 processada (100 notas)
+2026-01-14 17:14:55 - api_client - INFO - Página 49/65 processada (100 notas)
+2026-01-14 17:14:55 - api_client - INFO - Página 49/65 processada (100 notas)
+2026-01-14 17:14:56 - api_client - INFO - Página 50/65 processada (100 notas)
+2026-01-14 17:14:56 - api_client - INFO - Página 50/65 processada (100 notas)
+2026-01-14 17:14:56 - api_client - INFO - Página 51/65 processada (100 notas)
+2026-01-14 17:14:56 - api_client - INFO - Página 51/65 processada (100 notas)
+2026-01-14 17:14:57 - api_client - INFO - Página 52/65 processada (100 notas)
+2026-01-14 17:14:57 - api_client - INFO - Página 52/65 processada (100 notas)
+2026-01-14 17:14:57 - api_client - INFO - Página 53/65 processada (100 notas)
+2026-01-14 17:14:57 - api_client - INFO - Página 53/65 processada (100 notas)
+2026-01-14 17:14:58 - api_client - INFO - Página 54/65 processada (100 notas)
+2026-01-14 17:14:58 - api_client - INFO - Página 54/65 processada (100 notas)
+2026-01-14 17:14:59 - api_client - INFO - Página 55/65 processada (100 notas)
+2026-01-14 17:14:59 - api_client - INFO - Página 55/65 processada (100 notas)
+2026-01-14 17:14:59 - api_client - INFO - Página 56/65 processada (100 notas)
+2026-01-14 17:14:59 - api_client - INFO - Página 56/65 processada (100 notas)
+2026-01-14 17:15:00 - api_client - INFO - Página 57/65 processada (100 notas)
+2026-01-14 17:15:00 - api_client - INFO - Página 57/65 processada (100 notas)
+2026-01-14 17:15:00 - api_client - INFO - Página 58/65 processada (100 notas)
+2026-01-14 17:15:00 - api_client - INFO - Página 58/65 processada (100 notas)
+2026-01-14 17:15:01 - api_client - INFO - Página 59/65 processada (100 notas)
+2026-01-14 17:15:01 - api_client - INFO - Página 59/65 processada (100 notas)
+2026-01-14 17:15:02 - api_client - INFO - Página 60/65 processada (100 notas)
+2026-01-14 17:15:02 - api_client - INFO - Página 60/65 processada (100 notas)
+2026-01-14 17:15:02 - api_client - INFO - Página 61/65 processada (100 notas)
+2026-01-14 17:15:02 - api_client - INFO - Página 61/65 processada (100 notas)
+2026-01-14 17:15:03 - api_client - INFO - Página 62/65 processada (100 notas)
+2026-01-14 17:15:03 - api_client - INFO - Página 62/65 processada (100 notas)
+2026-01-14 17:15:04 - api_client - INFO - Página 63/65 processada (100 notas)
+2026-01-14 17:15:04 - api_client - INFO - Página 63/65 processada (100 notas)
+2026-01-14 17:15:05 - api_client - INFO - Página 64/65 processada (100 notas)
+2026-01-14 17:15:05 - api_client - INFO - Página 64/65 processada (100 notas)
+2026-01-14 17:15:05 - api_client - INFO - Página 65/65 processada (95 notas)
+2026-01-14 17:15:05 - api_client - INFO - Página 65/65 processada (95 notas)
+2026-01-14 17:15:05 - api_client - INFO - Busca concluída: 6495 vendas encontradas
+2026-01-14 17:15:05 - api_client - INFO - Busca concluída: 6495 vendas encontradas
+2026-01-19 13:15:44 - root - INFO - Carregando coordenadas do IBGE
+2026-01-19 13:15:44 - ibge_client - INFO - Carregando dados do IBGE de https://raw.githubusercontent.com/kelvins/municipios-brasileiros/main/csv/municipios.csv
+2026-01-19 13:15:45 - ibge_client - INFO - Carregados 5571 municípios
+2026-01-19 13:15:45 - root - INFO - Coordenadas carregadas: 5571 municípios
+2026-01-19 13:15:45 - api_client - INFO - TinyAPIClient inicializado
+2026-01-19 13:15:45 - api_client - INFO - Iniciando busca de vendas: 2026-01-01 a 2026-01-19
+2026-01-19 13:15:45 - api_client - INFO - Página 1/2 processada (100 notas)
+2026-01-19 13:15:46 - api_client - INFO - Página 2/2 processada (78 notas)
+2026-01-19 13:15:46 - api_client - INFO - Busca concluída: 178 vendas encontradas
+2026-01-19 13:15:47 - root - INFO - Vendas processadas: 178 registros
+2026-01-19 13:15:48 - root - INFO - Dashboard exibido com sucesso
+2026-01-20 09:05:05 - root - INFO - Carregando coordenadas do IBGE
+2026-01-20 09:05:05 - ibge_client - INFO - Carregando dados do IBGE de https://raw.githubusercontent.com/kelvins/municipios-brasileiros/main/csv/municipios.csv
+2026-01-20 09:05:05 - ibge_client - INFO - Carregados 5571 municípios
+2026-01-20 09:05:05 - root - INFO - Coordenadas carregadas: 5571 municípios
+2026-01-20 09:05:05 - api_client - INFO - TinyAPIClient inicializado
+2026-01-20 09:05:05 - api_client - INFO - Iniciando busca de vendas: 2026-01-01 a 2026-01-20
+2026-01-20 09:05:06 - api_client - INFO - Página 1/3 processada (100 notas)
+2026-01-20 09:05:07 - api_client - INFO - Página 2/3 processada (100 notas)
+2026-01-20 09:05:07 - api_client - INFO - Página 3/3 processada (3 notas)
+2026-01-20 09:05:07 - api_client - INFO - Busca concluída: 203 vendas encontradas
+2026-01-20 09:05:08 - root - INFO - Vendas processadas: 203 registros
+2026-01-20 09:05:09 - root - INFO - Dashboard exibido com sucesso
+2026-01-20 10:02:54 - root - ERROR - Erro ao processar e exibir dados
+Traceback (most recent call last):
+  File "E:\PLANTEFORTE\Precificação\Projeto 2026\Mapa de Vendas\dashboard-tiny\pages\1_📊_Dashboard_Vendas.py", line 314, in <module>
+    df_agrupado = df_final.groupby(
+                  ~~~~~~~~~~~~~~~~^
+        ['chave_cidade', 'Cidade_Original', 'Estado', 'latitude', 'longitude', 'Canal']
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ).agg(
+    ^
+  File "C:\Users\walan\AppData\Local\Programs\Python\Python313\Lib\site-packages\pandas\core\frame.py", line 9183, in groupby
+    return DataFrameGroupBy(
+        obj=self,
+    ...<7 lines>...
+        dropna=dropna,
+    )
+  File "C:\Users\walan\AppData\Local\Programs\Python\Python313\Lib\site-packages\pandas\core\groupby\groupby.py", line 1329, in __init__
+    grouper, exclusions, obj = get_grouper(
+                               ~~~~~~~~~~~^
+        obj,
+        ^^^^
+    ...<5 lines>...
+        dropna=self.dropna,
+        ^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\walan\AppData\Local\Programs\Python\Python313\Lib\site-packages\pandas\core\groupby\grouper.py", line 1043, in get_grouper
+    raise KeyError(gpr)
+KeyError: 'Canal'
+2026-01-20 10:02:54 - root - ERROR - Erro ao processar e exibir dados
+Traceback (most recent call last):
+  File "E:\PLANTEFORTE\Precificação\Projeto 2026\Mapa de Vendas\dashboard-tiny\pages\1_📊_Dashboard_Vendas.py", line 314, in <module>
+    df_agrupado = df_final.groupby(
+                  ~~~~~~~~~~~~~~~~^
+        ['chave_cidade', 'Cidade_Original', 'Estado', 'latitude', 'longitude', 'Canal']
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ).agg(
+    ^
+  File "C:\Users\walan\AppData\Local\Programs\Python\Python313\Lib\site-packages\pandas\core\frame.py", line 9183, in groupby
+    return DataFrameGroupBy(
+        obj=self,
+    ...<7 lines>...
+        dropna=dropna,
+    )
+  File "C:\Users\walan\AppData\Local\Programs\Python\Python313\Lib\site-packages\pandas\core\groupby\groupby.py", line 1329, in __init__
+    grouper, exclusions, obj = get_grouper(
+                               ~~~~~~~~~~~^
+        obj,
+        ^^^^
+    ...<5 lines>...
+        dropna=self.dropna,
+        ^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\walan\AppData\Local\Programs\Python\Python313\Lib\site-packages\pandas\core\groupby\grouper.py", line 1043, in get_grouper
+    raise KeyError(gpr)
+KeyError: 'Canal'
+2026-01-20 10:05:22 - root - INFO - Carregando coordenadas do IBGE
+2026-01-20 10:05:22 - ibge_client - INFO - Carregando dados do IBGE de https://raw.githubusercontent.com/kelvins/municipios-brasileiros/main/csv/municipios.csv
+2026-01-20 10:05:22 - ibge_client - INFO - Carregados 5571 municípios
+2026-01-20 10:05:22 - root - INFO - Coordenadas carregadas: 5571 municípios
+2026-01-20 10:05:22 - api_client - INFO - TinyAPIClient inicializado
+2026-01-20 10:05:22 - api_client - INFO - Iniciando busca de vendas: 2026-01-01 a 2026-01-20
+2026-01-20 10:05:23 - api_client - INFO - Página 1/3 processada (100 notas)
+2026-01-20 10:05:23 - api_client - INFO - Página 2/3 processada (100 notas)
+2026-01-20 10:05:24 - api_client - INFO - Página 3/3 processada (3 notas)
+2026-01-20 10:05:24 - api_client - INFO - Busca concluída: 203 vendas encontradas
+2026-01-20 10:05:25 - root - INFO - Vendas processadas: 203 registros
+2026-01-20 10:05:25 - root - INFO - Dashboard exibido com sucesso
+2026-01-20 10:18:23 - root - INFO - Carregando coordenadas do IBGE
+2026-01-20 10:18:23 - ibge_client - INFO - Carregando dados do IBGE de https://raw.githubusercontent.com/kelvins/municipios-brasileiros/main/csv/municipios.csv
+2026-01-20 10:18:24 - ibge_client - INFO - Carregados 5571 municípios
+2026-01-20 10:18:24 - root - INFO - Coordenadas carregadas: 5571 municípios
+2026-01-20 10:18:24 - api_client - INFO - TinyAPIClient inicializado
+2026-01-20 10:18:24 - api_client - INFO - Iniciando busca de vendas: 2026-01-01 a 2026-01-20
+2026-01-20 10:18:24 - api_client - INFO - Página 1/3 processada (100 notas)
+2026-01-20 10:18:25 - api_client - INFO - Página 2/3 processada (100 notas)
+2026-01-20 10:18:25 - api_client - INFO - Página 3/3 processada (3 notas)
+2026-01-20 10:18:25 - api_client - INFO - Busca concluída: 203 vendas encontradas
+2026-01-20 10:18:26 - root - INFO - Vendas processadas: 203 registros
+2026-01-20 10:18:27 - root - INFO - Dashboard exibido com sucesso
+2026-01-20 11:36:32 - root - INFO - Carregando coordenadas do IBGE
+2026-01-20 11:36:32 - ibge_client - INFO - Carregando dados do IBGE de https://raw.githubusercontent.com/kelvins/municipios-brasileiros/main/csv/municipios.csv
+2026-01-20 11:36:32 - ibge_client - INFO - Carregados 5571 municípios
+2026-01-20 11:36:32 - root - INFO - Coordenadas carregadas: 5571 municípios
+2026-01-20 11:36:32 - api_client - INFO - TinyAPIClient inicializado
+2026-01-20 11:36:32 - api_client - INFO - Iniciando busca de vendas: 2026-01-01 a 2026-01-20
+2026-01-20 11:36:35 - root - INFO - Vendas processadas: 204 registros
+2026-01-20 11:36:35 - root - INFO - Dashboard exibido com sucesso
+2026-01-20 13:05:26 - root - INFO - Carregando coordenadas do IBGE
+2026-01-20 13:05:26 - ibge_client - INFO - Carregando dados do IBGE de https://raw.githubusercontent.com/kelvins/municipios-brasileiros/main/csv/municipios.csv
+2026-01-20 13:05:26 - ibge_client - INFO - Carregados 5571 municípios
+2026-01-20 13:05:26 - root - INFO - Coordenadas carregadas: 5571 municípios
+2026-01-20 13:05:26 - api_client - INFO - TinyAPIClient inicializado
+2026-01-20 13:05:26 - api_client - INFO - Iniciando busca de vendas: 2026-01-01 a 2026-01-20
+2026-01-20 13:05:29 - root - INFO - Vendas processadas: 206 registros
+2026-01-20 13:05:30 - root - INFO - Dashboard exibido com sucesso
+2026-01-20 13:06:32 - api_client - INFO - TinyAPIClient inicializado
+2026-01-20 13:06:32 - api_client - INFO - Iniciando busca de vendas: 2025-01-01 a 2026-12-31
+2026-01-20 13:06:56 - api_client - INFO - TinyAPIClient inicializado
+2026-01-20 13:06:56 - api_client - INFO - Iniciando busca de vendas: 2025-01-01 a 2025-12-31
+2026-01-20 13:07:34 - root - INFO - Vendas processadas: 6377 registros
+2026-01-20 13:07:35 - root - INFO - Dashboard exibido com sucesso
+2026-01-20 13:17:55 - api_client - INFO - TinyAPIClient inicializado
+2026-01-20 13:17:55 - api_client - INFO - Iniciando busca de vendas: 2024-01-01 a 2024-12-31
+2026-01-20 13:19:05 - root - INFO - Vendas processadas: 7794 registros
+2026-01-20 13:19:06 - root - INFO - Dashboard exibido com sucesso
+2026-01-20 14:41:46 - api_client - INFO - TinyAPIClient inicializado
+2026-01-20 14:41:46 - api_client - INFO - TinyAPIClient inicializado
+2026-01-20 14:41:46 - api_client - INFO - Iniciando busca de vendas: 2023-01-01 a 2023-12-31
+2026-01-20 14:41:46 - api_client - INFO - Iniciando busca de vendas: 2023-01-01 a 2023-12-31
+2026-01-20 14:42:10 - api_client - INFO - Iniciando busca de vendas: 2026-01-01 a 2026-01-20
+2026-01-20 14:42:10 - api_client - INFO - Iniciando busca de vendas: 2026-01-01 a 2026-01-20
+2026-01-20 14:52:59 - api_client - INFO - TinyAPIClient inicializado
+2026-01-20 14:52:59 - api_client - INFO - TinyAPIClient inicializado
+2026-01-20 14:52:59 - api_client - INFO - Iniciando busca de vendas: 2023-01-01 a 2026-01-20
+2026-01-20 14:52:59 - api_client - INFO - Iniciando busca de vendas: 2023-01-01 a 2026-01-20
+2026-01-20 14:53:31 - api_client - ERROR - Erro na página 5: HTTPSConnectionPool(host='api.tiny.com.br', port=443): Read timed out. (read timeout=20)
+2026-01-20 14:53:31 - api_client - ERROR - Erro na página 5: HTTPSConnectionPool(host='api.tiny.com.br', port=443): Read timed out. (read timeout=20)
+2026-01-20 14:56:01 - api_client - INFO - TinyAPIClient inicializado
+2026-01-20 14:56:01 - api_client - INFO - TinyAPIClient inicializado
+2026-01-20 14:56:01 - api_client - INFO - Iniciando busca de vendas: 2023-01-01 a 2026-01-20
+2026-01-20 14:56:01 - api_client - INFO - Iniciando busca de vendas: 2023-01-01 a 2026-01-20
