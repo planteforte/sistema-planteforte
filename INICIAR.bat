@@ -1,6 +1,0 @@
-@echo off
-cd /d "%~dp0"
-echo Iniciando o Portal PlanteForte...
-echo Aguarde abrir no navegador...
-streamlit run Home.py
-pause
