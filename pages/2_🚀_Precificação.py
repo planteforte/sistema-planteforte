@@ -1,530 +1,225 @@
 import streamlit as st
-import streamlit.components.v1 as components
+import pandas as pd
+from database import DatabaseManager
 
-# Configuração da página para ocupar a tela toda
-st.set_page_config(page_title="Calculadora de Precificação", layout="wide", page_icon="💰")
+# ============================================================
+# CONFIGURAÇÃO
+# ============================================================
+st.set_page_config(page_title="Precificação de Venda", layout="wide", page_icon="💰")
+db = DatabaseManager()
+db.inicializar_banco()
 
-# Aqui colocamos o seu código HTML original com as Novas Funcionalidades (PDF e Carregar)
-html_codigo = """
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sementes Planteforte - Sistema</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
-    
-    <style>
-        /* --- ESTILO GERAL E TIPOGRAFIA --- */
-        body {
-            font-family: 'Segoe UI', 'Roboto', Helvetica, Arial, sans-serif;
-            background-color: #ffffff;
-            margin: 0;
-            padding: 10px;
-            color: #333;
-        }
+st.title("💰 Precificação Comercial & Margens")
+st.markdown("Definição de preço de venda (SKU) para todos os canais.")
 
-        .main-container {
-            max-width: 100%;
-            margin: 0 auto;
-        }
+# ============================================================
+# 1. CARREGAR DADOS (MOTOR)
+# ============================================================
+df_insumos = db.listar_insumos()
+df_lotes = db.listar_lotes_disponiveis()
+df_padrao = db.listar_produtos_padrao()
 
-        /* --- CABEÇALHO COM LOGO --- */
-        .header {
-            text-align: center;
-            margin-bottom: 30px;
-            background-color: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-            border-bottom: 4px solid #2e7d32;
-        }
+# ============================================================
+# 2. SELETOR DE ORIGEM (FÁBRICA VS TABELA)
+# ============================================================
+st.sidebar.header("1. Origem do Produto")
+origem_custo = st.sidebar.radio("Base de Custo:", ["Tabela Projetada (Padrão)", "Lote Produzido (Fábrica)"])
+
+custo_final_saco = 0.0
+nome_produto_final = ""
+
+# --- CENÁRIO A: TABELA PROJETADA (LISTA PRONTA) ---
+if origem_custo == "Tabela Projetada (Padrão)":
+    if df_padrao is not None and not df_padrao.empty:
+        opcoes_padrao = df_padrao.apply(lambda x: f"{x['sku']} - {x['nome']} ({x['descricao']})", axis=1)
+        item_selecionado = st.sidebar.selectbox("Selecione o Produto:", options=opcoes_padrao)
         
-        .logo-area {
-            max-height: 80px;
-            margin-bottom: 10px;
-        }
+        idx = opcoes_padrao[opcoes_padrao == item_selecionado].index[0]
+        dados_prod = df_padrao.iloc[idx]
         
-        h1 { margin: 0; color: #1b5e20; font-size: 1.8em; text-transform: uppercase; letter-spacing: 1px;}
-        p.subtitle { color: #7f8c8d; margin-top: 5px; font-weight: 500;}
-
-        /* --- CARTÃO PRINCIPAL DA CALCULADORA --- */
-        .card {
-            background: white;
-            padding: 35px;
-            border-radius: 12px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-            margin-bottom: 30px;
-            border-top: 6px solid #27ae60; /* Verde Agro */
-        }
-
-        h2 { color: #27ae60; margin-top: 0; border-bottom: 1px solid #eee; padding-bottom: 10px; margin-bottom: 20px; }
-
-        /* --- INPUTS E LABELS --- */
-        label {
-            display: block;
-            margin-top: 15px;
-            font-weight: 600;
-            font-size: 0.95em;
-            color: #444;
-        }
-
-        input {
-            width: 100%;
-            padding: 10px 12px;
-            margin-top: 5px;
-            border: 1px solid #ccc;
-            border-radius: 6px;
-            box-sizing: border-box;
-            font-size: 1em;
-            transition: border 0.3s;
-        }
-
-        input:focus { border-color: #27ae60; outline: none; background-color: #f9fff9; }
-
-        /* --- BOTÕES --- */
-        .btn {
-            width: 100%;
-            padding: 15px;
-            border: none;
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 1.1em;
-            font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            transition: 0.3s;
-            margin-top: 25px;
-        }
-
-        .btn-green { background-color: #27ae60; color: white; }
-        .btn-green:hover { background-color: #219150; }
-
-        .btn-blue { background-color: #2980b9; color: white; margin-top: 5px; padding: 10px; font-size: 0.9em; text-transform: none; width: auto; display: inline-block;}
-        .btn-blue:hover { background-color: #21618c; }
-
-        .btn-outline { background: transparent; border: 2px solid #27ae60; color: #27ae60; margin-top: 10px;}
-        .btn-outline:hover { background: #eafaf1; }
-
-        .btn-red { background-color: #c0392b; color: white; margin-top: 10px; }
-        .btn-red:hover { background-color: #a93226; }
+        custo_final_saco = dados_prod['custo_padrao']
+        nome_produto_final = f"{dados_prod['nome']} - {dados_prod['descricao']}"
         
-        .btn-gray { background-color: #7f8c8d; color: white; }
-        .btn-gray:hover { background-color: #626d6e; }
+        st.sidebar.info(f"📦 Custo fixo da tabela: **R$ {custo_final_saco:.2f}**")
+    else:
+        st.warning("Tabela de produtos padrão vazia.")
+        st.stop()
 
-        /* --- SEÇÃO DE CLIENTE --- */
-        .client-section {
-            background-color: #f8f9fa;
-            padding: 20px;
-            border-radius: 8px;
-            border: 1px dashed #bdc3c7;
-            margin-bottom: 20px;
-        }
-        .row { display: flex; gap: 15px; flex-wrap: wrap; }
-        .col { flex: 1; min-width: 150px; }
+# --- CENÁRIO B: LOTE DE FÁBRICA (MONTADORA) ---
+else:
+    if df_lotes is not None and not df_lotes.empty:
+        opcoes_lotes = df_lotes.apply(lambda x: f"{x['codigo_lote']} - {x['produto_nome']} (R$ {x['custo_kg_final']:.2f}/kg)", axis=1)
+        lote_selecionado_str = st.sidebar.selectbox("Selecione o Lote:", options=opcoes_lotes)
 
-        /* --- RESULTADOS --- */
-        .resultado-box {
-            margin-top: 30px;
-            padding: 20px;
-            background-color: #e8f5e9;
-            border: 1px solid #c8e6c9;
-            border-radius: 8px;
-            text-align: center;
-        }
-        .valor-destaque { font-size: 2em; color: #2e7d32; font-weight: bold; display: block; margin: 10px 0;}
+        idx_lote = opcoes_lotes[opcoes_lotes == lote_selecionado_str].index[0]
+        dados_lote = df_lotes.iloc[idx_lote]
+        custo_kg_semente = dados_lote['custo_kg_final']
 
-        /* --- TABELA DE HISTÓRICO --- */
-        table { width: 100%; border-collapse: collapse; margin-top: 10px; font-size: 0.9em; }
-        th, td { padding: 10px; text-align: left; border-bottom: 1px solid #ddd; }
-        th { background-color: #f2f2f2; color: #333; }
-        tr:hover { background-color: #f5f5f5; }
+        st.sidebar.markdown("---")
+        tamanho_saco = st.sidebar.radio("Embalagem:", [5, 10, 20], horizontal=True, format_func=lambda x: f"{x} kg")
         
-        .btn-action { 
-            cursor: pointer; font-weight: bold; border: none; background: none; margin: 0 5px; font-size: 1.1em;
-        }
-        .btn-delete { color: #c0392b; }
-        .btn-load { color: #2980b9; }
+        custo_saco_estimado = 0.0
+        if df_insumos is not None:
+            try:
+                row_saco = df_insumos[df_insumos['nome'].str.contains(f"Saco {tamanho_saco}kg", case=False)]
+                if not row_saco.empty: custo_saco_estimado = float(row_saco.iloc[0]['custo_unitario'])
+            except: pass
 
-        /* --- MODAL (JANELA FLUTUANTE) --- */
-        .modal-overlay {
-            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background-color: rgba(0,0,0,0.6); z-index: 1000;
-            justify-content: center; align-items: center; overflow-y: auto;
-        }
-        .modal-content {
-            background-color: white; padding: 30px; border-radius: 10px; width: 700px; max-width: 95%;
-            border-top: 6px solid #2980b9; position: relative; margin: 20px auto;
-        }
-        .close-btn { position: absolute; top: 15px; right: 20px; font-size: 28px; cursor: pointer; color: #aaa; }
+        c_emb = st.sidebar.number_input(f"Custo Saco (R$)", value=custo_saco_estimado, step=0.10)
+        c_ext = st.sidebar.number_input("Outros (R$)", value=0.20, step=0.05)
+
+        custo_final_saco = (custo_kg_semente * tamanho_saco) + c_emb + c_ext
+        nome_produto_final = f"{dados_lote['produto_nome']} (Lote {dados_lote['codigo_lote']}) - {tamanho_saco}kg"
+    else:
+        st.warning("Nenhum lote produzido encontrado.")
+        st.stop()
+
+# === MOSTRADOR DE CUSTO BASE (C4) ===
+st.markdown(f"""
+<div style="background-color: #e3f2fd; padding: 15px; border-radius: 10px; border-left: 5px solid #2196f3; margin-bottom: 20px;">
+    <h3 style="margin:0; color: #0d47a1;">{nome_produto_final}</h3>
+    <span style="font-size: 1.2em;">Custo Base (B4/C4): <b>R$ {custo_final_saco:.2f}</b></span>
+</div>
+""", unsafe_allow_html=True)
+
+# ============================================================
+# 3. SIMULADOR DE CANAIS DE VENDA
+# ============================================================
+st.subheader("2. Simulador de Preços por Canal")
+
+# Layout 2x2: Linha 1 (ML e Shopee), Linha 2 (Site e Venda Direta)
+row1_col1, row1_col2 = st.columns(2)
+st.markdown("---")
+row2_col1, row2_col2 = st.columns(2)
+
+# ============================================================
+# CANAL 1: MERCADO LIVRE (Fórmula Validada)
+# ============================================================
+with row1_col1:
+    st.markdown("### 🟡 Mercado Livre")
+    with st.container(border=True):
+        # Inputs O4, P4, Q4, R4, S4
+        c1, c2 = st.columns(2)
+        ml_margem = c1.number_input("Margem (O4) %", value=30.0, step=1.0, key="ml_m")
+        ml_imposto = c2.number_input("Imposto (P4) %", value=5.2, step=0.1, key="ml_i")
+        c3, c4 = st.columns(2)
+        ml_comissao = c3.number_input("Comissão (Q4) %", value=16.5, step=0.5, key="ml_c")
+        ml_antecipacao = c4.number_input("Antecipação (R4) %", value=3.5, step=0.1, key="ml_a")
+        ml_frete = st.number_input("Custo Frete (S4) R$", value=22.45, step=0.50, key="ml_fr")
+
+        # Lógica: (B4+6)/(1-...) ou (B4+S4)/(1-...) se >= 79
+        divisor_ml = 1 - ((ml_comissao + ml_imposto + ml_margem + ml_antecipacao) / 100)
         
-        .readonly { background-color: #eee; color: #555; pointer-events: none; border-color: #ddd; }
-        
-        .section-title {
-            font-size: 0.9em; text-transform: uppercase; letter-spacing: 1px; color: #2980b9; 
-            margin-top: 20px; margin-bottom: 5px; border-bottom: 1px solid #eee; padding-bottom: 5px;
-        }
-
-    </style>
-</head>
-<body>
-
-    <div class="main-container" id="conteudoParaPDF">
-
-        <div class="header">
-            <img src="https://sementesplanteforte.com.br/img/logo-1713454562.jpg" alt="Logo" class="logo-area" width="200">
-            <h1>CALCULADORA PRECIFICAÇÃO</h1>
-            <p class="subtitle">Cotação Comercial</p>
-        </div>
-
-        <div class="card">
-            <h2>Dados da Cotação</h2>
+        if divisor_ml > 0:
+            taxa_fixa_ml = 6.00
+            preco_teste = (custo_final_saco + taxa_fixa_ml) / divisor_ml
             
-            <div class="client-section">
-                <div class="row">
-                    <div class="col" style="flex: 2;">
-                        <label>Nome do Cliente / Fazenda</label>
-                        <input type="text" id="nomeCliente" placeholder="Ex: Fazenda Santa Clara">
-                    </div>
-                    <div class="col">
-                        <label>Cidade / Estado</label>
-                        <input type="text" id="cidadeCliente" placeholder="Ex: Sorriso - MT">
-                    </div>
-                </div>
+            if preco_teste >= 79.00:
+                pv_ml = (custo_final_saco + ml_frete) / divisor_ml
+                msg_ml = "Preço >= 79 (Considera Frete S4)"
+            else:
+                pv_ml = preco_teste
+                msg_ml = "Preço < 79 (Considera Taxa Fixa R$ 6)"
                 
-                <div class="row">
-                    <div class="col" style="flex: 2;">
-                        <label>Produto / Cultivar</label>
-                        <input type="text" id="nomeProduto" placeholder="Ex: Soja Intacta (Digite ou use a Ficha Técnica)">
-                    </div>
-                    <div class="col">
-                        <label>Data</label>
-                        <input type="text" id="dataCotacao" readonly>
-                    </div>
-                </div>
-            </div>
+            st.divider()
+            st.markdown(f"""<div style="text-align: center;"><h2 style="color: #fdd835; margin:0;">R$ {pv_ml:.2f}</h2><small>{msg_ml}</small></div>""", unsafe_allow_html=True)
+        else:
+            st.error("Taxas ML > 100%")
 
-            <div class="row" style="align-items: flex-end;">
-                <div class="col">
-                    <label>Custo do Produto (Saco 10kg)</label>
-                    <input type="number" id="custoProduto" placeholder="0.00" class="input-destaque">
-                </div>
-                <div class="col" style="flex: 0 0 auto; padding-bottom: 5px;">
-                    <button class="btn-blue hide-on-pdf" data-html2canvas-ignore="true" onclick="abrirModal()">🏭 Abrir Ficha Técnica (Produção)</button>
-                </div>
-            </div>
+# ============================================================
+# CANAL 2: SHOPEE (Fórmula Validada)
+# ============================================================
+with row1_col2:
+    st.markdown("### 🟠 Shopee")
+    with st.container(border=True):
+        # Inputs V4, W4, X4, Y4, Z4
+        c1, c2 = st.columns(2)
+        sh_margem = c1.number_input("Margem (V4) %", value=21.0, step=1.0, key="sh_m")
+        sh_aliquota = c2.number_input("Alíquota (W4) %", value=20.0, step=0.5, key="sh_a")
+        c3, c4 = st.columns(2)
+        sh_imposto = c3.number_input("Imp. Fiscal (Y4) %", value=6.0, step=0.5, key="sh_i")
+        sh_antecipacao = c4.number_input("Antecipação (Z4) %", value=3.5, step=0.1, key="sh_ant")
+        sh_fixa = st.number_input("Taxa Fixa (X4) R$", value=4.00, step=0.50, key="sh_f")
 
-            <div class="row">
-                <div class="col">
-                    <label>Valor do Frete Total (R$)</label>
-                    <input type="number" id="valorFrete" placeholder="0.00">
-                </div>
-                <div class="col">
-                    <label>Margem de Lucro (%)</label>
-                    <input type="number" id="margemLucro" placeholder="30">
-                </div>
-            </div>
+        # Lógica: (C4 + X4) / (1 - W4 - Y4 - V4 - Z4)
+        divisor_sh = 1 - ((sh_aliquota + sh_imposto + sh_margem + sh_antecipacao) / 100)
+        
+        if divisor_sh > 0:
+            pv_sh = (custo_final_saco + sh_fixa) / divisor_sh
+            st.divider()
+            st.markdown(f"""<div style="text-align: center;"><h2 style="color: #e65100; margin:0;">R$ {pv_sh:.2f}</h2><small>Markup Shopee</small></div>""", unsafe_allow_html=True)
+        else:
+            st.error("Taxas Shopee > 100%")
 
-            <div class="row">
-                <div class="col">
-                    <label>Impostos Totais (%)</label>
-                    <input type="number" id="imposto" placeholder="18">
-                </div>
-                <div class="col">
-                    <label>Comissão (%)</label>
-                    <input type="number" id="comissao" placeholder="5">
-                </div>
-                <div class="col">
-                    <label>Outras Taxas (%)</label>
-                    <input type="number" id="outrasTaxas" placeholder="3.5">
-                </div>
-            </div>
+# ============================================================
+# CANAL 3: SITE (Fórmula Validada)
+# ============================================================
+with row2_col1:
+    st.markdown("### 🟢 Site Próprio")
+    with st.container(border=True):
+        # Inputs D4, E4, F4, I4, H4
+        c1, c2 = st.columns(2)
+        si_margem = c1.number_input("Margem (I4) %", value=20.0, step=1.0, key="si_m")
+        si_imposto = c2.number_input("Imposto (D4) %", value=5.7, step=0.1, key="si_i")
+        c3, c4 = st.columns(2)
+        si_comissao = c3.number_input("Comissão (E4) %", value=2.0, step=0.1, key="si_c")
+        si_outras = c4.number_input("Outros (F4) %", value=12.0, step=0.5, key="si_o")
+        si_frete = st.number_input("Frete (H4) R$", value=80.00, step=1.0, key="si_f")
 
-            <button class="btn btn-green hide-on-pdf" data-html2canvas-ignore="true" onclick="calcularVenda()">Calcular Preço Final</button>
+        # Lógica: (C4 + H4) / (1 - I4 - D4 - E4 - F4)
+        divisor_si = 1 - ((si_margem + si_imposto + si_comissao + si_outras) / 100)
+        
+        if divisor_si > 0:
+            pv_si = (custo_final_saco + si_frete) / divisor_si
+            st.divider()
+            st.markdown(f"""<div style="text-align: center;"><h2 style="color: #2e7d32; margin:0;">R$ {pv_si:.2f}</h2><small>Markup Site</small></div>""", unsafe_allow_html=True)
+        else:
+            st.error("Taxas Site > 100%")
 
-            <div class="resultado-box" id="areaResultado" style="display:none;">
-                <div class="row">
-                    <div class="col">
-                        <span>Preço de Venda (FOB)</span>
-                        <span class="valor-destaque" id="resFOB">R$ 0,00</span>
-                    </div>
-                    <div class="col">
-                        <span>Preço de Venda (CIF)</span>
-                        <span class="valor-destaque" id="resCIF">R$ 0,00</span>
-                    </div>
+# ============================================================
+# CANAL 4: VENDA DIRETA (NOVO - Lógica Aplicada)
+# ============================================================
+with row2_col2:
+    st.markdown("### ⚫ Venda Direta / Balcão")
+    with st.container(border=True):
+        # Inputs B4, D4, E4, F4, G4
+        c1, c2 = st.columns(2)
+        vd_margem = c1.number_input("Margem (B4) %", value=30.0, step=1.0, key="vd_m")
+        vd_imposto = c2.number_input("Imposto (D4) %", value=5.7, step=0.1, key="vd_i")
+        c3, c4 = st.columns(2)
+        vd_comissao = c3.number_input("Comissão (E4) %", value=10.0, step=0.5, key="vd_c")
+        vd_outras = c4.number_input("Taxas/Cartão (F4) %", value=5.0, step=0.5, key="vd_o")
+        vd_frete = st.number_input("Frete (G4) R$", value=50.00, step=1.0, key="vd_f")
+
+        # Lógica FOB (H4): C4 / (1 - B4 - D4 - E4 - F4)
+        # Lógica CIF (I4): (C4 + G4) / (1 - B4 - D4 - E4 - F4)
+        
+        divisor_vd = 1 - ((vd_margem + vd_imposto + vd_comissao + vd_outras) / 100)
+        
+        if divisor_vd > 0:
+            pv_fob = custo_final_saco / divisor_vd
+            pv_cif = (custo_final_saco + vd_frete) / divisor_vd
+            
+            st.divider()
+            col_fob, col_cif = st.columns(2)
+            
+            with col_fob:
+                st.markdown(f"""
+                <div style="text-align: center; border-right: 1px solid #ddd;">
+                    <span style="color: #666; font-size: 0.9em;">Preço FOB (H4)</span>
+                    <h2 style="color: #333; margin:0;">R$ {pv_fob:.2f}</h2>
+                    <small>Cliente Retira</small>
                 </div>
+                """, unsafe_allow_html=True)
                 
-                <div class="hide-on-pdf" data-html2canvas-ignore="true">
-                    <button class="btn btn-outline" onclick="salvarCotacao()">💾 Salvar no Histórico</button>
-                    <button class="btn btn-red" onclick="gerarPDF()">📄 Baixar PDF da Cotação</button>
+            with col_cif:
+                st.markdown(f"""
+                <div style="text-align: center;">
+                    <span style="color: #666; font-size: 0.9em;">Preço CIF (I4)</span>
+                    <h2 style="color: #333; margin:0;">R$ {pv_cif:.2f}</h2>
+                    <small>Entrega Inclusa</small>
                 </div>
-            </div>
-        </div>
-    </div> <div class="main-container">
-        <div class="card">
-            <h2>Histórico de Cotações Salvas</h2>
-            <div style="overflow-x: auto;">
-                <table id="tabelaHistorico">
-                    <thead>
-                        <tr>
-                            <th>Cliente</th>
-                            <th>Produto</th> 
-                            <th>Preço (CIF)</th>
-                            <th style="text-align: center;">Ações</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        </tbody>
-                </table>
-            </div>
-            <div class="row" style="margin-top: 15px;">
-                <div class="col">
-                    <button class="btn-blue" onclick="limparHistorico()">Limpar Tudo</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div id="modalProducao" class="modal-overlay">
-        <div class="modal-content">
-            <span class="close-btn" onclick="fecharModal()">&times;</span>
-            <h2 style="color: #2980b9; border:none; margin-bottom: 5px;">🏭 Ficha Técnica de Produção</h2>
-            
-            <label>Nome da Semente / Produto</label>
-            <input type="text" id="nomeSemente" placeholder="Identificação do lote ou cultivar...">
-
-            <div class="section-title">1. Dados da Semente Base</div>
-            <div class="row">
-                <div class="col"><label>Qtd Sementes (kg)</label><input type="number" id="qtdSemente" placeholder="0"></div>
-                <div class="col"><label>Pureza Inicial (%)</label><input type="number" id="purezaInicial" placeholder="0"></div>
-                <div class="col"><label>Pureza Desejada</label><input type="number" id="purezaDesejada" placeholder="Ex: 80"></div>
-            </div>
-            <div class="row">
-                <div class="col"><label>Custo do Ponto (R$)</label><input type="number" id="custoPonto" placeholder="0.00"></div>
-                <div class="col"><label>Pontos Utilizados</label><input type="text" id="pontosUtilizados" class="readonly" readonly></div>
-            </div>
-
-            <div class="section-title">2. Insumos (Seedgel & Grafite)</div>
-            <div class="row">
-                <div class="col"><label>Qtd Seedgel (kg)</label><input type="number" id="qtdSeedgel" placeholder="0"></div>
-                <div class="col"><label>Custo Unit. Seedgel (R$)</label><input type="number" id="custoUnitSeedgel" placeholder="0.00"></div>
-            </div>
-            <div class="row">
-                <div class="col"><label>Qtd Grafite (kg)</label><input type="number" id="qtdGrafite" placeholder="0"></div>
-                <div class="col"><label>Custo Unit. Grafite (R$)</label><input type="number" id="custoUnitGrafite" placeholder="0.00"></div>
-            </div>
-
-            <div class="section-title">3. Acabamento</div>
-            <div class="row">
-                <div class="col"><label>Custo Emb. Unit. (R$)</label><input type="number" id="custoEmbalagem" placeholder="0.00"></div>
-                <div class="col"><label>Custo Agregados (R$)</label><input type="number" id="custoAgregados" placeholder="0.00"></div>
-            </div>
-
-            <div style="background: #eafaf1; padding: 15px; margin-top: 20px; border-radius: 8px; border: 1px solid #c8e6c9;">
-                <div class="row">
-                    <div class="col"><p style="margin: 5px 0; font-size: 0.9em;">Custo Batida (+R$100):<br><strong id="resCustoBatida" style="font-size: 1.1em;">R$ 0,00</strong></p></div>
-                    <div class="col"><p style="margin: 5px 0; font-size: 0.9em;">Peso Total Produzido:<br><strong id="resPesoTotal" style="font-size: 1.1em;">0 kg</strong></p></div>
-                    <div class="col"><p style="margin: 5px 0; font-size: 0.9em;">Custo por Kg:<br><strong id="resCustoKg" style="font-size: 1.1em;">R$ 0,00</strong></p></div>
-                </div>
-                <hr style="border: 0; border-top: 1px dashed #ccc;">
-                <p style="margin: 5px 0; text-align: center;">Custo Final Saco 10kg ( Produto + Emb.): <br><strong id="resSaco10kg" style="color:#2980b9; font-size: 1.4em;">R$ 0,00</strong></p>
-            </div>
-
-            <div style="display: flex; gap: 10px; margin-top: 20px;">
-                <button class="btn btn-gray" style="margin-top:0;" onclick="fecharModal()">❌ Cancelar / Retornar</button>
-                <button class="btn btn-green" style="background-color: #2980b9; margin-top:0;" onclick="calcularETransferir()">✅ Calcular e Usar este Custo</button>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        // --- INICIALIZAÇÃO ---
-        window.onload = function() {
-            carregarTabela();
-            document.getElementById('dataCotacao').value = new Date().toLocaleDateString('pt-BR');
-        }
-
-        // --- FUNÇÃO PARA GERAR PDF (NOVA) ---
-        function gerarPDF() {
-            // Seleciona a área principal
-            const element = document.getElementById('conteudoParaPDF');
-            
-            // Pega o nome do cliente para o arquivo
-            const cliente = document.getElementById('nomeCliente').value || "Cliente";
-            
-            // Configurações do PDF
-            const opt = {
-                margin:       10,
-                filename:     `Cotacao_${cliente}.pdf`,
-                image:        { type: 'jpeg', quality: 0.98 },
-                html2canvas:  { scale: 2 }, // Melhora a qualidade
-                jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' }
-            };
-
-            // Gera e baixa
-            html2pdf().set(opt).from(element).save();
-        }
-
-        // --- LÓGICA DE VENDA ---
-        function calcularVenda() {
-            let custo = parseFloat(document.getElementById('custoProduto').value) || 0;
-            let frete = parseFloat(document.getElementById('valorFrete').value) || 0;
-            let margem = parseFloat(document.getElementById('margemLucro').value) || 0;
-            let imposto = parseFloat(document.getElementById('imposto').value) || 0;
-            let comissao = parseFloat(document.getElementById('comissao').value) || 0;
-            let taxas = parseFloat(document.getElementById('outrasTaxas').value) || 0;
-
-            let somaPorcentagens = margem + imposto + comissao + taxas;
-
-            if (somaPorcentagens >= 100) {
-                alert("A soma das porcentagens não pode ser 100% ou mais.");
-                return;
-            }
-
-            let divisor = 1 - (somaPorcentagens / 100);
-            let precoFOB = custo / divisor;
-            let precoCIF = (custo + frete) / divisor;
-
-            document.getElementById('resFOB').innerText = precoFOB.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
-            document.getElementById('resCIF').innerText = precoCIF.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
-            
-            document.getElementById('areaResultado').style.display = 'block';
-        }
-
-        // --- SALVAR COTAÇÃO (MELHORADO: SALVA TUDO) ---
-        function salvarCotacao() {
-            // Pega TODOS os campos
-            let dados = {
-                cliente: document.getElementById('nomeCliente').value,
-                cidade: document.getElementById('cidadeCliente').value,
-                produto: document.getElementById('nomeProduto').value,
-                data: new Date().toLocaleDateString('pt-BR'),
-                custo: document.getElementById('custoProduto').value,
-                frete: document.getElementById('valorFrete').value,
-                margem: document.getElementById('margemLucro').value,
-                imposto: document.getElementById('imposto').value,
-                comissao: document.getElementById('comissao').value,
-                taxas: document.getElementById('outrasTaxas').value,
-                precoFinal: document.getElementById('resCIF').innerText
-            };
-
-            let historico = JSON.parse(localStorage.getItem('historicoCotacoes')) || [];
-            historico.push(dados);
-            localStorage.setItem('historicoCotacoes', JSON.stringify(historico));
-
-            carregarTabela();
-            alert("Cotação salva no histórico!");
-        }
-
-        // --- CARREGAR ITEM DO HISTÓRICO (NOVO) ---
-        function carregarItem(index) {
-            let historico = JSON.parse(localStorage.getItem('historicoCotacoes')) || [];
-            let item = historico[index];
-
-            if(item) {
-                // Preenche os campos de volta
-                document.getElementById('nomeCliente').value = item.cliente || "";
-                document.getElementById('cidadeCliente').value = item.cidade || "";
-                document.getElementById('nomeProduto').value = item.produto || "";
-                document.getElementById('custoProduto').value = item.custo || "";
+                """, unsafe_allow_html=True)
                 
-                document.getElementById('valorFrete').value = item.frete || "";
-                document.getElementById('margemLucro').value = item.margem || "";
-                document.getElementById('imposto').value = item.imposto || "";
-                document.getElementById('comissao').value = item.comissao || "";
-                document.getElementById('outrasTaxas').value = item.taxas || "";
-
-                // Recalcula para mostrar o resultado
-                calcularVenda();
-                
-                // Rola a tela para o topo
-                window.scrollTo(0, 0);
-                alert("Dados carregados! Verifique os valores acima.");
-            }
-        }
-
-        // --- TABELA DE HISTÓRICO (COM BOTÃO CARREGAR) ---
-        function carregarTabela() {
-            let historico = JSON.parse(localStorage.getItem('historicoCotacoes')) || [];
-            let tbody = document.querySelector('#tabelaHistorico tbody');
-            tbody.innerHTML = ""; 
-
-            // Vamos mostrar do mais novo para o mais antigo (reverse)
-            historico.forEach((item, index) => {
-                let row = `<tr>
-                    <td><strong>${item.cliente}</strong></td>
-                    <td>${item.produto}</td>
-                    <td>${item.precoFinal || item.preco}</td>
-                    <td style="text-align: center;">
-                        <button class="btn-action btn-load" onclick="carregarItem(${index})" title="Carregar Dados">📝</button>
-                        <button class="btn-action btn-delete" onclick="deletarItem(${index})" title="Apagar">🗑️</button>
-                    </td>
-                </tr>`;
-                tbody.innerHTML += row;
-            });
-        }
-
-        function deletarItem(index) {
-            if(confirm("Deseja apagar este item?")) {
-                let historico = JSON.parse(localStorage.getItem('historicoCotacoes')) || [];
-                historico.splice(index, 1);
-                localStorage.setItem('historicoCotacoes', JSON.stringify(historico));
-                carregarTabela();
-            }
-        }
-
-        function limparHistorico() {
-            if(confirm("Tem certeza que deseja apagar TODO o histórico?")) {
-                localStorage.removeItem('historicoCotacoes');
-                carregarTabela();
-            }
-        }
-
-        // --- CONTROLE DA JANELA (ABRIR/FECHAR) ---
-        function abrirModal() { document.getElementById('modalProducao').style.display = 'flex'; }
-        function fecharModal() { document.getElementById('modalProducao').style.display = 'none'; }
-
-        // --- LÓGICA DE PRODUÇÃO (BATIDA) ---
-        function calcularETransferir() {
-            // Mesma lógica anterior
-            let nomeSemente = document.getElementById('nomeSemente').value;
-            let qtdSemente = parseFloat(document.getElementById('qtdSemente').value) || 0;
-            let purezaDesejada = parseFloat(document.getElementById('purezaDesejada').value) || 0;
-            let custoPonto = parseFloat(document.getElementById('custoPonto').value) || 0;
-            let qtdSeedgel = parseFloat(document.getElementById('qtdSeedgel').value) || 0;
-            let custoUnitSeedgel = parseFloat(document.getElementById('custoUnitSeedgel').value) || 0;
-            let qtdGrafite = parseFloat(document.getElementById('qtdGrafite').value) || 0;
-            let custoUnitGrafite = parseFloat(document.getElementById('custoUnitGrafite').value) || 0;
-            let custoEmb = parseFloat(document.getElementById('custoEmbalagem').value) || 0;
-            let custoAgreg = parseFloat(document.getElementById('custoAgregados').value) || 0;
-
-            let pontosUtilizados = qtdSemente * purezaDesejada; 
-            document.getElementById('pontosUtilizados').value = pontosUtilizados.toFixed(2);
-            let custoSementeTotal = pontosUtilizados * custoPonto; 
-            let custoTotalSeedgel = qtdSeedgel * custoUnitSeedgel; 
-            let custoTotalGrafite = qtdGrafite * custoUnitGrafite; 
-            let custoBatida = custoSementeTotal + custoTotalSeedgel + custoTotalGrafite + 100; 
-            let pesoTotalBatida = qtdSemente + qtdSeedgel + qtdGrafite;
-            
-            if (pesoTotalBatida === 0) { alert("Preencha as quantidades."); return; }
-
-            let custoPorKg = custoBatida / pesoTotalBatida; 
-            let custoConteudo10kg = custoPorKg * 10;
-            let custoFinalSaco = (custoEmb + custoAgreg) + custoConteudo10kg;
-
-            document.getElementById('resCustoBatida').innerText = custoBatida.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'});
-            document.getElementById('resPesoTotal').innerText = pesoTotalBatida.toFixed(2) + " kg";
-            document.getElementById('resCustoKg').innerText = custoPorKg.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'});
-            document.getElementById('resSaco10kg').innerText = custoFinalSaco.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'});
-
-            document.getElementById('custoProduto').value = custoFinalSaco.toFixed(2);
-            if(nomeSemente !== "") { document.getElementById('nomeProduto').value = nomeSemente; }
-            setTimeout(function() { fecharModal(); }, 500); 
-        }
-    </script>
-</body>
-</html>
-"""
-
-# Renderizar o HTML dentro do Streamlit
-components.html(html_codigo, height=1400, scrolling=True)
+        else:
+            st.error("Taxas Venda Direta > 100%")
