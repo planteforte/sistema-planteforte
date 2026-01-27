@@ -113,4 +113,4 @@ class TinyAPIClient:
             
         except Exception as e:
             logger.error(f"Erro ao buscar detalhes da nota {id_nota}: {e}")
-            return {}
+            return {}    
