@@ -57,4 +57,4 @@ class IBGEClient:
             
         except Exception as e:
             logger.error(f"Erro ao carregar dados do IBGE: {e}")
-            raise
+            raise    
