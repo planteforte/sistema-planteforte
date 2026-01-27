@@ -51,4 +51,4 @@ class Config:
     # ============ Streamlit ============
     PAGE_TITLE = "Dashboard Comercial - Tiny ERP"
     PAGE_LAYOUT = "wide"
-    SIDEBAR_STATE = "expanded"
+    SIDEBAR_STATE = "expanded"    
